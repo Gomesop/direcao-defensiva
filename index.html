@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Direção Defensiva | Treinamento Interativo — Hora da Segurança</title>
+    <meta name="description" content="Treinamento interativo de Direção Defensiva em 6 fases, com simulador de direção, checklist do veículo, condução urbana, condições adversas e caça aos riscos. www.horadaseguranca.com">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================================================
+         CENÁRIO DE ESTRADA ANIMADO (fundo decorativo)
+         ========================================================== -->
+    <div class="road-scene" aria-hidden="true">
+        <div class="rs-sky"></div>
+        <div class="rs-sun"></div>
+
+        <div class="rs-skyline">
+            <span class="bld b1"></span><span class="bld b2"></span><span class="bld b3"></span>
+            <span class="bld b4"></span><span class="bld b5"></span><span class="bld b6"></span>
+            <span class="bld b7"></span><span class="bld b8"></span>
+        </div>
+
+        <div class="rs-hills"></div>
+
+        <div class="rs-road">
+            <div class="rs-lane-marks"></div>
+            <div class="rs-guardrail"></div>
+        </div>
+
+        <div class="rs-poles">
+            <span class="pole p1"></span><span class="pole p2"></span>
+            <span class="pole p3"></span><span class="pole p4"></span>
+        </div>
+
+        <div class="rs-overlay"></div>
+    </div>
+
+
+    <!-- CABEÇALHO -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand-box">
+                <img src="logo.png" alt="Logo Hora da Segurança" class="header-logo">
+                <div class="brand-text">
+                    <span class="brand-title">DIREÇÃO DEFENSIVA</span>
+                    <span class="brand-tagline">Percepção de risco · Antecipação · Segurança viária</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="https://www.horadaseguranca.com" target="_blank" rel="noopener noreferrer" class="site-link-btn">
+                    🌐 www.horadaseguranca.com
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="main-content">
+
+        <!-- ================= TELA 1: CADASTRO ================= -->
+        <section id="screen-welcome" class="screen-box">
+            <div class="hero-card">
+                <div class="hero-logo-wrapper">
+                    <img src="logo.png" alt="Logo Oficial Hora da Segurança" class="hero-logo-img">
+                </div>
+
+                <span class="hero-eyebrow">🚦 Treinamento interativo</span>
+                <h1 class="hero-title">Direção <mark>Defensiva</mark></h1>
+                <p class="hero-subtitle">
+                    Seis fases para treinar percepção de risco, antecipação e reação correta —
+                    incluindo um <strong>simulador jogável</strong> em que você assume o volante.
+                </p>
+
+                <div class="phases-summary-grid">
+                    <div class="phase-mini-card mc-1"><span class="mini-icon">🔍</span><strong>1. Checklist</strong><p>Inspeção do veículo no pátio.</p></div>
+                    <div class="phase-mini-card mc-2"><span class="mini-icon">🏙️</span><strong>2. Urbano</strong><p>Decisões no trânsito da cidade.</p></div>
+                    <div class="phase-mini-card mc-3"><span class="mini-icon">🎯</span><strong>3. Caça-riscos</strong><p>Ache os perigos na cena.</p></div>
+                    <div class="phase-mini-card mc-4"><span class="mini-icon">🌧️</span><strong>4. Adversidades</strong><p>Chuva, neblina e ofuscamento.</p></div>
+                    <div class="phase-mini-card mc-5"><span class="mini-icon">🕹️</span><strong>5. Simulador</strong><p>Você dirige: desvie e freie.</p></div>
+                    <div class="phase-mini-card mc-6"><span class="mini-icon">🏁</span><strong>6. Missão final</strong><p>Rota integrada com vidas.</p></div>
+                </div>
+
+                <form id="form-register" class="game-setup-box" novalidate>
+                    <h3>📝 Cadastro do condutor</h3>
+                    <p class="setup-intro">Informe seus dados para registrar a participação e liberar o treinamento.</p>
+
+                    <div class="input-group">
+                        <label for="reg-name">👤 Nome completo</label>
+                        <input type="text" id="reg-name" placeholder="Ex: Carlos Eduardo Lima" autocomplete="name" maxlength="60">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-email">✉️ E-mail</label>
+                        <input type="email" id="reg-email" placeholder="Ex: carlos.lima@empresa.com.br" autocomplete="email" maxlength="100">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-company">🏢 Empresa / frota</label>
+                        <input type="text" id="reg-company" placeholder="Ex: Transportadora Logística S.A." autocomplete="organization" maxlength="80">
+                    </div>
+
+                    <div id="setup-error" class="setup-error hidden"></div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">🚗 Iniciar o treinamento</button>
+
+                    <p class="setup-privacy-note">
+                        🔒 Seus dados (nome, e-mail, empresa, data e desempenho) são registrados apenas para controle de participação no treinamento.
+                    </p>
+                </form>
+
+                <div class="marketing-footer-banner">
+                    <span>Treinamentos corporativos de trânsito, NRs e Segurança do Trabalho?</span>
+                    <a href="https://www.horadaseguranca.com" target="_blank" rel="noopener noreferrer">Acesse www.horadaseguranca.com 🚀</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TELA 2: ARENA ================= -->
+        <section id="screen-game" class="screen-box hidden">
+
+            <div class="game-status-bar">
+                <div class="player-score-card">
+                    <div class="avatar-icon">🚘</div>
+                    <div class="score-info">
+                        <span id="player-name-display" class="player-name">Condutor</span>
+                        <span class="score-line"><strong id="total-score" class="score-value">0</strong> pts</span>
+                    </div>
+                </div>
+
+                <div class="center-round-info">
+                    <div id="phase-title" class="phase-title-text">Fase 1: Checklist do Veículo</div>
+                    <div id="phase-subtitle" class="phase-sub-text">Inspeção no pátio da empresa</div>
+                </div>
+
+                <div class="status-right-box">
+                    <div id="lives-container" class="lives-box hidden"><span id="lives-hearts">❤️❤️❤️</span></div>
+                    <button id="btn-toggle-sound" class="btn-icon" title="Ativar/Desativar Som">🔊</button>
+                </div>
+            </div>
+
+            <div class="phase-steps-bar">
+                <div id="step-indicator-1" class="step-badge active"><span class="step-emoji">🔍</span><span class="step-label">Checklist</span></div>
+                <div id="step-indicator-2" class="step-badge"><span class="step-emoji">🏙️</span><span class="step-label">Urbano</span></div>
+                <div id="step-indicator-3" class="step-badge"><span class="step-emoji">🎯</span><span class="step-label">Riscos</span></div>
+                <div id="step-indicator-4" class="step-badge"><span class="step-emoji">🌧️</span><span class="step-label">Clima</span></div>
+                <div id="step-indicator-5" class="step-badge"><span class="step-emoji">🕹️</span><span class="step-label">Simulador</span></div>
+                <div id="step-indicator-6" class="step-badge"><span class="step-emoji">🏁</span><span class="step-label">Final</span></div>
+            </div>
+
+
+            <!-- ---------- FASE 1: CHECKLIST ---------- -->
+            <div id="container-phase-1" class="phase-container">
+                <div class="phase-header-box">
+                    <span class="container-label">🅿️ Pátio da empresa — inspeção prévia</span>
+                    <p class="phase-instruction-text">Clique <strong>apenas nos itens irregulares</strong>. Marcar um item em conformidade custa pontos.</p>
+                </div>
+                <div class="wrapper-head">
+                    <span id="p1-remaining" class="remaining-pill">0 de 10 irregularidades</span>
+                </div>
+                <div class="progress-track"><div id="p1-progress" class="progress-fill"></div></div>
+                <div id="checklist-items-grid" class="checklist-grid"></div>
+            </div>
+
+
+            <!-- ---------- FASE 2: URBANO ---------- -->
+            <div id="container-phase-2" class="phase-container hidden">
+                <div class="cockpit">
+                    <div class="cockpit-mirror">
+                        <span class="mirror-label">RETROVISOR</span>
+                        <span id="p2-mirror-text" class="mirror-traffic">🚙 tráfego atrás em distância normal</span>
+                    </div>
+
+                    <div id="p2-scene" class="drive-viewport">
+                        <div class="dv-sky"></div>
+                        <div class="dv-city"></div>
+                        <div class="dv-road"><div class="dv-dashes"></div></div>
+                        <div id="p2-hazard" class="hazard-pop">
+                            <span id="p2-hazard-icon" class="hazard-icon">🚶</span>
+                        </div>
+                    </div>
+
+                    <div class="cockpit-dash">
+                        <div class="gauge">
+                            <svg viewBox="0 0 100 60" class="gauge-svg">
+                                <path d="M8 55 A42 42 0 0 1 92 55" fill="none" stroke="#1e293b" stroke-width="9" stroke-linecap="round"/>
+                                <path id="p2-gauge-arc" d="M8 55 A42 42 0 0 1 92 55" fill="none" stroke="url(#gaugeGrad2)" stroke-width="9" stroke-linecap="round"
+                                      stroke-dasharray="132" stroke-dashoffset="132"/>
+                                <defs><linearGradient id="gaugeGrad2" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0" stop-color="#38bdf8"/><stop offset="0.6" stop-color="#facc15"/><stop offset="1" stop-color="#ef4444"/>
+                                </linearGradient></defs>
+                            </svg>
+                            <div class="gauge-readout"><span id="p2-speed">45</span><small>km/h</small></div>
+                        </div>
+                        <div class="dash-info">
+                            <div id="p2-hazard-title" class="hazard-title">Pedestre atravessando na faixa</div>
+                            <p id="p2-hazard-desc" class="hazard-desc">Um pedestre inicia a travessia na faixa sem semáforo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrapper-head">
+                    <span class="container-label">🕹️ Qual a atitude defensiva correta?</span>
+                    <span id="p2-remaining" class="remaining-pill">1 de 6</span>
+                </div>
+                <div id="p2-actions" class="actions-grid"></div>
+            </div>
+
+
+            <!-- ---------- FASE 3: CAÇA AOS RISCOS ---------- -->
+            <div id="container-phase-3" class="phase-container hidden">
+                <div class="phase-header-flex">
+                    <div>
+                        <span class="container-label">🎯 Caça aos riscos na via</span>
+                        <p class="phase-instruction-text">Clique nos <strong>6 perigos</strong> escondidos na cena. Cuidado: nem tudo na imagem é irregular.</p>
+                    </div>
+                    <div class="timer-badge">⏱️ <strong id="p3-timer-display">60</strong>s</div>
+                </div>
+
+                <div class="wrapper-head">
+                    <span id="p3-found" class="remaining-pill">0 / 6 riscos encontrados</span>
+                    <button id="btn-p3-hint" class="btn btn-ghost btn-sm">💡 Dica (−10 pts)</button>
+                </div>
+                <div class="progress-track"><div id="p3-progress" class="progress-fill"></div></div>
+
+                <div id="risk-scene" class="risk-scene">
+                    <svg class="scene-art" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="rsSky" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0" stop-color="#8ec9f0"/><stop offset="1" stop-color="#dceefb"/>
+                            </linearGradient>
+                            <linearGradient id="rsAsp" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0" stop-color="#6b7280"/><stop offset="1" stop-color="#3f4653"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="1000" height="300" fill="url(#rsSky)"/>
+                        <path d="M0 250 L150 170 L280 250 Z" fill="#9fb8a6"/>
+                        <path d="M220 255 L400 150 L560 255 Z" fill="#8aa993"/>
+                        <path d="M520 250 L700 175 L880 250 Z" fill="#9fb8a6"/>
+                        <rect y="240" width="1000" height="80" fill="#7fae7c"/>
+                        <path d="M0 520 L1000 520 L1000 300 L0 300 Z" fill="url(#rsAsp)"/>
+                        <rect y="296" width="1000" height="10" fill="#e5e7eb"/>
+                        <rect y="510" width="1000" height="10" fill="#e5e7eb"/>
+                        <g fill="#fbbf24">
+                            <rect x="40"  y="400" width="70" height="8" rx="4"/><rect x="170" y="400" width="70" height="8" rx="4"/>
+                            <rect x="300" y="400" width="70" height="8" rx="4"/><rect x="430" y="400" width="70" height="8" rx="4"/>
+                            <rect x="560" y="400" width="70" height="8" rx="4"/><rect x="690" y="400" width="70" height="8" rx="4"/>
+                            <rect x="820" y="400" width="70" height="8" rx="4"/><rect x="950" y="400" width="50" height="8" rx="4"/>
+                        </g>
+                        <g fill="#e5e7eb" opacity=".55">
+                            <rect x="0" y="348" width="1000" height="4"/><rect x="0" y="458" width="1000" height="4"/>
+                        </g>
+                    </svg>
+                    <div id="scene-hotspots" class="scene-hotspots"></div>
+                </div>
+
+                <div id="p3-found-list" class="found-chips"></div>
+            </div>
+
+
+            <!-- ---------- FASE 4: ADVERSIDADES ---------- -->
+            <div id="container-phase-4" class="phase-container hidden">
+                <div class="cockpit">
+                    <div class="cockpit-mirror">
+                        <span class="mirror-label">RETROVISOR</span>
+                        <span id="p4-mirror-text" class="mirror-traffic">🌧️ visibilidade reduzida atrás</span>
+                    </div>
+
+                    <div id="p4-scene" class="drive-viewport adverse">
+                        <div class="dv-sky"></div>
+                        <div class="dv-city"></div>
+                        <div class="dv-road"><div class="dv-dashes"></div></div>
+                        <div id="weather-layer" class="weather-layer"></div>
+                        <div id="p4-hazard" class="hazard-pop">
+                            <span id="p4-hazard-icon" class="hazard-icon">🌊</span>
+                        </div>
+                    </div>
+
+                    <div class="cockpit-dash">
+                        <div class="gauge">
+                            <svg viewBox="0 0 100 60" class="gauge-svg">
+                                <path d="M8 55 A42 42 0 0 1 92 55" fill="none" stroke="#1e293b" stroke-width="9" stroke-linecap="round"/>
+                                <path id="p4-gauge-arc" d="M8 55 A42 42 0 0 1 92 55" fill="none" stroke="url(#gaugeGrad2)" stroke-width="9" stroke-linecap="round"
+                                      stroke-dasharray="132" stroke-dashoffset="132"/>
+                            </svg>
+                            <div class="gauge-readout"><span id="p4-speed">80</span><small>km/h</small></div>
+                        </div>
+                        <div class="dash-info">
+                            <div id="p4-hazard-title" class="hazard-title">Aquaplanagem sob chuva intensa</div>
+                            <p id="p4-hazard-desc" class="hazard-desc">A água acumulada faz os pneus perderem contato com o asfalto.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrapper-head">
+                    <span class="container-label">🕹️ Qual a técnica correta?</span>
+                    <span id="p4-remaining" class="remaining-pill">1 de 4</span>
+                </div>
+                <div id="p4-actions" class="actions-grid"></div>
+            </div>
+
+
+            <!-- ---------- FASE 5: SIMULADOR JOGÁVEL ---------- -->
+            <div id="container-phase-5" class="phase-container hidden">
+
+                <div id="sim-briefing" class="sim-briefing">
+                    <div class="sim-brief-icon">🕹️</div>
+                    <h3>Simulador de direção</h3>
+                    <p class="sim-brief-lead">
+                        Agora você assume o volante. Mantenha o carro na pista, desvie dos obstáculos
+                        e <strong>reduza a velocidade</strong> quando o perigo se aproximar.
+                    </p>
+
+                    <div class="sim-controls-help">
+                        <div class="sch-item"><span class="key">←</span><span class="key">→</span><span>ou <strong>A</strong> / <strong>D</strong> — trocar de faixa</span></div>
+                        <div class="sch-item"><span class="key">↓</span><span>ou <strong>S</strong> / barra de espaço — frear</span></div>
+                        <div class="sch-item"><span class="key">↑</span><span>ou <strong>W</strong> — acelerar</span></div>
+                        <div class="sch-item"><span class="key">📱</span><span>No celular use os botões na tela</span></div>
+                    </div>
+
+                    <ul class="sim-rules">
+                        <li>✅ <strong>+2 pts</strong> por obstáculo ultrapassado com segurança</li>
+                        <li>🛡️ <strong>+15 pts</strong> ao reduzir para menos de 45 km/h perto de pedestres e ciclistas</li>
+                        <li>💥 <strong>−1 vida</strong> a cada colisão · você tem 3 vidas</li>
+                        <li>⏱️ A rodada dura <strong>75 segundos</strong></li>
+                    </ul>
+
+                    <button id="btn-sim-start" class="btn btn-primary btn-lg btn-block">🚦 Assumir o volante</button>
+                </div>
+
+                <div id="sim-stage" class="sim-stage hidden">
+                    <div class="sim-hud">
+                        <div class="hud-item"><span class="hud-label">Tempo</span><strong id="sim-time">75</strong></div>
+                        <div class="hud-item"><span class="hud-label">Velocidade</span><strong id="sim-speed">60</strong><small>km/h</small></div>
+                        <div class="hud-item"><span class="hud-label">Vidas</span><strong id="sim-lives">❤️❤️❤️</strong></div>
+                        <div class="hud-item"><span class="hud-label">Pontos</span><strong id="sim-points">0</strong></div>
+                    </div>
+
+                    <div class="sim-canvas-wrap">
+                        <canvas id="sim-canvas" width="600" height="740" aria-label="Simulador de direção"></canvas>
+                        <div id="sim-alert" class="sim-alert hidden"></div>
+                    </div>
+
+                    <div class="sim-touch-controls">
+                        <button id="sim-left"  class="sim-btn" aria-label="Esquerda">◀</button>
+                        <button id="sim-brake" class="sim-btn sim-btn-brake" aria-label="Frear">FREIO</button>
+                        <button id="sim-gas"   class="sim-btn sim-btn-gas" aria-label="Acelerar">ACEL.</button>
+                        <button id="sim-right" class="sim-btn" aria-label="Direita">▶</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ---------- FASE 6: MISSÃO FINAL ---------- -->
+            <div id="container-phase-6" class="phase-container hidden">
+                <div class="story-banner banner-gold">
+                    <h3>🏁 Missão final integrada</h3>
+                    <p>Reaja aos eventos da rota completa. Cada decisão errada custa uma vida.</p>
+                </div>
+
+                <div class="wrapper-head">
+                    <span class="container-label">🚧 Evento da rota</span>
+                    <span id="p6-remaining" class="remaining-pill">1 de 4</span>
+                </div>
+                <div class="progress-track"><div id="p6-progress" class="progress-fill"></div></div>
+
+                <div id="p6-event" class="event-card-area"></div>
+                <div id="p6-actions" class="actions-grid"></div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= TELA 3: RELATÓRIO ================= -->
+        <section id="screen-victory" class="screen-box hidden">
+            <div class="victory-card">
+                <div class="victory-icon-large">🏆</div>
+                <h1 class="victory-title">Relatório de desempenho</h1>
+                <p class="victory-subtitle">Direção Defensiva — resultado consolidado das 6 fases</p>
+
+                <div class="index-box">
+                    <span class="index-label">Índice de direção defensiva</span>
+                    <div id="defensive-index-number" class="index-number">0</div>
+                    <div id="defensive-index-rating" class="index-rating-badge">—</div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card"><span class="metric-ico">🎯</span><span id="m-score" class="metric-value">0</span><span class="metric-label">Pontuação total</span></div>
+                    <div class="metric-card"><span class="metric-ico">✅</span><span id="m-decisions" class="metric-value">0%</span><span class="metric-label">Decisões corretas</span></div>
+                    <div class="metric-card"><span class="metric-ico">⚡</span><span id="m-reaction" class="metric-value">0,0s</span><span class="metric-label">Reação média</span></div>
+                    <div class="metric-card"><span class="metric-ico">💥</span><span id="m-crashes" class="metric-value">0</span><span class="metric-label">Colisões no simulador</span></div>
+                </div>
+
+                <div id="report-tips" class="report-tips"></div>
+
+                <div class="victory-actions-row">
+                    <button id="btn-restart-game" class="btn btn-primary btn-lg">🔄 Refazer o treinamento</button>
+                </div>
+
+                <div class="marketing-cta-box">
+                    <img src="logo.png" alt="Logo" class="cta-logo">
+                    <div class="cta-text">
+                        <h4>Leve o treinamento de direção defensiva para a sua frota</h4>
+                        <p>Cursos de NRs, gestão preventiva e relatórios na plataforma oficial.</p>
+                        <a href="https://www.horadaseguranca.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            Acessar www.horadaseguranca.com ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- MODAL DE FEEDBACK -->
+    <div id="modal-feedback" class="modal-backdrop hidden">
+        <div class="modal-card anim-pop">
+            <div class="modal-header">
+                <span id="feedback-badge" class="feedback-badge">STATUS</span>
+                <h2 id="feedback-title" class="modal-title">Resultado</h2>
+            </div>
+            <div id="feedback-body" class="modal-body"></div>
+            <div class="modal-footer">
+                <button id="btn-close-feedback" class="btn btn-primary btn-block">Continuar ➔</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="gameData.js"></script>
+    <script src="audio.js"></script>
+    <script src="sheets.js"></script>
+    <script src="simulator.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
