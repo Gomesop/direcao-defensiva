@@ -51,7 +51,7 @@ class DrivingSimulator {
         this.goodSlowdowns = 0;
 
         this.obstacles = [];
-        this.spawnTimer = 0;
+        this.spawnTimer = 2.2;   // período de graça no início da rodada
         this.roadOffset = 0;
         this.invuln = 0;
         this.shake = 0;
@@ -126,11 +126,22 @@ class DrivingSimulator {
             { kind: 'cone',       icon: '🚧', label: 'Obra na pista',       vulner: false, w: 54, h: 60, rel: 0.0 }
         ];
         const t = tipos[Math.floor(Math.random() * tipos.length)];
-        const lane = Math.floor(Math.random() * this.lanes);
 
-        // evita bloquear as três faixas ao mesmo tempo
-        const proximos = this.obstacles.filter(o => o.y > -260 && o.y < 40);
-        if (proximos.length >= 2 && proximos.every(o => o.lane !== lane) && Math.random() < 0.8) return;
+        // Considera TUDO que ainda está entre o ponto de surgimento e o carro:
+        // se um obstáculo já passou do carro, ele não bloqueia mais nada.
+        const janela = this.obstacles.filter(o => o.y < this.carY + 40);
+        const ocupadas = new Set(janela.map(o => o.lane));
+
+        let disponiveis = [];
+        for (let i = 0; i < this.lanes; i++) {
+            if (ocupadas.has(i)) continue;
+            // simula ocupar esta faixa: precisa sobrar pelo menos uma livre
+            if (ocupadas.size + 1 < this.lanes) disponiveis.push(i);
+        }
+        if (!disponiveis.length) return;
+
+        // prefere faixas mais afastadas da atual para dar tempo de reagir
+        const lane = disponiveis[Math.floor(Math.random() * disponiveis.length)];
 
         this.obstacles.push({
             ...t,
@@ -178,7 +189,7 @@ class DrivingSimulator {
         this.spawnTimer -= dt;
         if (this.spawnTimer <= 0) {
             this.spawn();
-            this.spawnTimer = Math.max(0.55, 1.5 - (this.speed - 40) / 90);
+            this.spawnTimer = Math.max(0.9, 1.9 - (this.speed - 40) / 110);
         }
 
         if (this.invuln > 0) this.invuln -= dt;
@@ -233,6 +244,7 @@ class DrivingSimulator {
     }
 
     crash(o) {
+        if (!this.running) return;
         this.lives--;
         this.crashes++;
         this.invuln = 1.6;
