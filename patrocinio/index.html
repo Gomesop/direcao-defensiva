@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Direção Defensiva | Hora da Segurança</title>
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;height:100%;background:#0f172a;}
+#hs-frame{border:0;width:100%;height:100%;display:block;}
+/* ============================================================
+   MÓDULO DE PATROCÍNIO — Hora da Segurança
+   Camada 100% independente do jogo original.
+   ============================================================ */
+
+.hs-ad-backdrop{
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  padding:16px;
+  background:rgba(4,8,18,.78);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  opacity:0; pointer-events:none; transition:opacity .28s ease;
+}
+.hs-ad-backdrop.is-open{opacity:1; pointer-events:auto;}
+.hs-ad-backdrop.hs-hidden{display:none;}
+
+.hs-ad-card{
+  position:relative; width:min(640px,100%); max-height:94vh; overflow:auto;
+  border-radius:26px; color:#fff;
+  background:
+    radial-gradient(120% 90% at 90% -10%, var(--hs-brand-3,#ffd166) 0%, transparent 55%),
+    linear-gradient(155deg, var(--hs-brand-1,#0b4da2) 0%, var(--hs-brand-2,#081a38) 78%);
+  box-shadow:0 40px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.10) inset;
+  transform:translateY(26px) scale(.96); opacity:0;
+  transition:transform .38s cubic-bezier(.34,1.4,.5,1), opacity .3s ease;
+  font-family:'Plus Jakarta Sans','Outfit',system-ui,-apple-system,Segoe UI,sans-serif;
+}
+.hs-ad-backdrop.is-open .hs-ad-card{transform:translateY(0) scale(1); opacity:1;}
+
+.hs-ad-card::before{
+  content:''; position:absolute; inset:0; border-radius:26px; pointer-events:none;
+  background:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.05) 0 2px, transparent 2px 22px);
+  mask-image:linear-gradient(180deg,#000 0%,transparent 62%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 62%);
+}
+
+.hs-ad-inner{position:relative; padding:26px 26px 22px;}
+
+.hs-ad-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.68rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+  padding:6px 12px; border-radius:999px;
+  background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+}
+
+.hs-ad-brandrow{display:flex; align-items:center; gap:16px; margin:18px 0 6px; flex-wrap:wrap;}
+.hs-ad-logo{
+  height:74px; width:auto; max-width:260px; object-fit:contain;
+  background:#fff; border-radius:16px; padding:10px 16px;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+.hs-ad-brandmeta{min-width:180px; flex:1;}
+.hs-ad-brandname{display:block; font-family:'Outfit',sans-serif; font-size:1.5rem; font-weight:900; line-height:1.1;}
+.hs-ad-brandseg{display:block; font-size:.82rem; opacity:.85; margin-top:3px;}
+
+.hs-ad-headline{
+  font-family:'Outfit',sans-serif; font-size:1.62rem; font-weight:900;
+  line-height:1.18; margin:16px 0 8px;
+}
+.hs-ad-headline mark{background:var(--hs-brand-3,#ffd166); color:#111827; padding:0 8px; border-radius:7px;}
+.hs-ad-claim{font-size:.98rem; line-height:1.55; opacity:.94; margin:0 0 16px;}
+
+.hs-ad-chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+.hs-ad-chip{
+  font-size:.78rem; font-weight:700; padding:7px 12px; border-radius:999px;
+  background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.2);
+}
+
+.hs-ad-ctas{display:grid; grid-template-columns:1fr; gap:10px; margin-bottom:16px;}
+@media(min-width:520px){.hs-ad-ctas{grid-template-columns:1fr 1fr;}}
+.hs-ad-btn{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  padding:14px 16px; border-radius:14px; text-decoration:none;
+  font-weight:800; font-size:.95rem; text-align:center;
+  transition:transform .16s ease, filter .16s ease;
+}
+.hs-ad-btn:hover{transform:translateY(-2px); filter:brightness(1.06);}
+.hs-ad-btn-primary{
+  background:var(--hs-brand-3,#ffd166); color:#111827;
+  box-shadow:0 12px 26px rgba(0,0,0,.32);
+}
+.hs-ad-btn-ghost{
+  background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.28);
+}
+
+.hs-ad-strip{
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  padding:12px 14px; border-radius:14px; margin-bottom:16px;
+  background:rgba(0,0,0,.24); border:1px solid rgba(255,255,255,.12);
+  font-size:.8rem;
+}
+.hs-ad-strip strong{font-size:.86rem;}
+.hs-ad-strip a{color:var(--hs-brand-3,#ffd166); font-weight:800; text-decoration:none;}
+
+.hs-ad-close{
+  width:100%; border:0; cursor:pointer;
+  padding:14px 18px; border-radius:14px;
+  font-family:'Outfit',sans-serif; font-weight:800; font-size:1rem;
+  background:#fff; color:#0f172a;
+  transition:opacity .2s ease, transform .16s ease;
+}
+.hs-ad-close:hover{transform:translateY(-2px);}
+.hs-ad-close[disabled]{opacity:.5; cursor:not-allowed; transform:none;}
+
+.hs-ad-legal{
+  margin:12px 0 0; text-align:center;
+  font-size:.68rem; letter-spacing:.05em; opacity:.6;
+}
+
+/* hub */
+.hub{min-height:100%;box-sizing:border-box;padding:48px 22px;font-family:'Plus Jakarta Sans',sans-serif;color:#e2e8f0;background:#0b1220;}
+.hub h1{font-family:Outfit,sans-serif;font-size:1.8rem;margin:0 0 6px;text-align:center}
+.hub p{opacity:.7;text-align:center;margin:0 0 30px;font-size:.95rem}
+.hubgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));max-width:1080px;margin:0 auto}
+.hubcard{display:block;padding:20px;border-radius:18px;text-decoration:none;color:#fff;
+ background:radial-gradient(120% 90% at 90% -10%,var(--c3) 0%,transparent 55%),linear-gradient(150deg,var(--c1),var(--c2));
+ box-shadow:0 16px 40px rgba(0,0,0,.4);transition:transform .18s ease}
+.hubcard:hover{transform:translateY(-4px)}
+.hubcard strong{display:block;font-family:Outfit,sans-serif;font-size:1.15rem;font-weight:900}
+.hubcard span{font-size:.8rem;opacity:.85}
+</style>
+</head>
+<body>
+<script>
+window.HS_SPONSORS = {"ledan":{"nome":"Ledan","nomeCompleto":"Ledan Indústria e Comércio Ltda.","segmento":"Fabricante de EPI e acessórios para solda","cidade":"Itaquaquecetuba/SP","email":"vendas@ledan.com.br","telefone":"(11) 4648-6484","site":"www.ledan.com.br","siteUrl":"https://www.ledan.com.br","tagline":"Proteção que trabalha junto com você.","claim":"Linha completa de proteção facial, vestimentas e acessórios para solda, com CA e qualidade de fábrica.","beneficios":["Fabricação própria","Linha solda completa","Rede nacional de representantes"],"cor1":"#0B4DA2","cor2":"#0A2E63","cor3":"#F5A800","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnbGVkYW4iIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwQjREQTIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwQTJFNjMiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCIgcng9IjE4IiBmaWxsPSIjZmZmZmZmIi8+PHBhdGggZD0iTTg0IDIyIEwxNDAgNDQgVjg4IEMxNDAgMTE2IDExNiAxMzIgODQgMTQyIEM1MiAxMzIgMjggMTE2IDI4IDg4IFY0NCBaIiBmaWxsPSJ1cmwoI2dsZWRhbikiLz48cGF0aCBkPSJNODQgMzQgTDEyOSA1MiBWODggQzEyOSAxMTAgMTEwIDEyMyA4NCAxMzEgQzU4IDEyMyAzOSAxMTAgMzkgODggVjUyIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0Y1QTgwMCIgc3Ryb2tlLXdpZHRoPSIzIiBvcGFjaXR5PSIuODUiLz48dGV4dCB4PSI4OCIgeT0iOTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJPdXRmaXQsIEFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjZmZmZmZmIj5MPC90ZXh0Pjx0ZXh0IHg9IjE2OCIgeT0iNzgiIGZvbnQtZmFtaWx5PSJPdXRmaXQsIEFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMEI0REEyIj5MZWRhbjwvdGV4dD48dGV4dCB4PSIxNzAiIHk9IjEwOCIgZm9udC1mYW1pbHk9IlBsdXMgSmFrYXJ0YSBTYW5zLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzViNjQ3MiIgbGV0dGVyLXNwYWNpbmc9IjEuMiI+RkFCUklDQU5URSBERSBFUEkgRSBBQ0VTU8OTUklPUyBQQVJBIFNPTERBPC90ZXh0PjxyZWN0IHg9IjE2OCIgeT0iODgiIHdpZHRoPSI3MiIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iI0Y1QTgwMCIvPjwvc3ZnPg=="},"lalan":{"nome":"Lalan do Brasil","nomeCompleto":"Lalan do Brasil Importação e Comércio de Equipamentos de Proteção Ltda.","segmento":"Equipamentos de proteção individual","cidade":"São José dos Pinhais/PR","email":"sac@lalan.com.br","telefone":"—","site":"www.lalan.com.br","siteUrl":"https://www.lalan.com.br","tagline":"Tecnologia em proteção para as mãos e o corpo.","claim":"EPIs desenvolvidos para performance real no chão de fábrica, do risco mecânico ao químico.","beneficios":["Linha técnica certificada","Conforto e produtividade","Suporte a especificação"],"cor1":"#127A3E","cor2":"#0A3F21","cor3":"#C8E96B","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnbGFsYW4iIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxMjdBM0UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwQTNGMjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCIgcng9IjE4IiBmaWxsPSIjZmZmZmZmIi8+PHBhdGggZD0iTTg0IDIyIEwxNDAgNDQgVjg4IEMxNDAgMTE2IDExNiAxMzIgODQgMTQyIEM1MiAxMzIgMjggMTE2IDI4IDg4IFY0NCBaIiBmaWxsPSJ1cmwoI2dsYWxhbikiLz48cGF0aCBkPSJNODQgMzQgTDEyOSA1MiBWODggQzEyOSAxMTAgMTEwIDEyMyA4NCAxMzEgQzU4IDEyMyAzOSAxMTAgMzkgODggVjUyIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0M4RTk2QiIgc3Ryb2tlLXdpZHRoPSIzIiBvcGFjaXR5PSIuODUiLz48dGV4dCB4PSI4OCIgeT0iOTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJPdXRmaXQsIEFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjZmZmZmZmIj5MQjwvdGV4dD48dGV4dCB4PSIxNjgiIHk9Ijc4IiBmb250LWZhbWlseT0iT3V0Zml0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzEyN0EzRSI+TGFsYW4gZG8gQnJhc2lsPC90ZXh0Pjx0ZXh0IHg9IjE3MCIgeT0iMTA4IiBmb250LWZhbWlseT0iUGx1cyBKYWthcnRhIFNhbnMsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjNWI2NDcyIiBsZXR0ZXItc3BhY2luZz0iMS4yIj5FUVVJUEFNRU5UT1MgREUgUFJPVEXDh8ODTyBJTkRJVklEVUFMPC90ZXh0PjxyZWN0IHg9IjE2OCIgeT0iODgiIHdpZHRoPSI3MiIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iI0M4RTk2QiIvPjwvc3ZnPg=="},"prometal-epis":{"nome":"Prometal EPIs","nomeCompleto":"Prometal EPIs — Equipamentos de Proteção Individual","segmento":"Distribuidora de EPI","cidade":"Pelotas/RS","email":"comercial@prometalepis.com.br","telefone":"(53) 3227-0470","site":"prometalepis.com.br","siteUrl":"https://prometalepis.com.br","tagline":"O EPI certo, na hora certa.","claim":"Distribuição completa de EPI com curadoria técnica: você compra proteção, não só produto.","beneficios":["Mix multimarcas","Entrega para todo o Brasil","Consultoria de CA"],"cor1":"#D64000","cor2":"#7A2400","cor3":"#FFC46B","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncHJvbWV0YWxlcGlzIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRDY0MDAwIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjN0EyNDAwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYyMCIgaGVpZ2h0PSIxNjAiIHJ4PSIxOCIgZmlsbD0iI2ZmZmZmZiIvPjxwYXRoIGQ9Ik04NCAyMiBMMTQwIDQ0IFY4OCBDMTQwIDExNiAxMTYgMTMyIDg0IDE0MiBDNTIgMTMyIDI4IDExNiAyOCA4OCBWNDQgWiIgZmlsbD0idXJsKCNncHJvbWV0YWxlcGlzKSIvPjxwYXRoIGQ9Ik04NCAzNCBMMTI5IDUyIFY4OCBDMTI5IDExMCAxMTAgMTIzIDg0IDEzMSBDNTggMTIzIDM5IDExMCAzOSA4OCBWNTIgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZDNDZCIiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9Ii44NSIvPjx0ZXh0IHg9Ijg4IiB5PSI5NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ik91dGZpdCwgQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiNmZmZmZmYiPlA8L3RleHQ+PHRleHQgeD0iMTY4IiB5PSI3OCIgZm9udC1mYW1pbHk9Ik91dGZpdCwgQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDAiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiNENjQwMDAiPlByb21ldGFsIEVQSXM8L3RleHQ+PHRleHQgeD0iMTcwIiB5PSIxMDgiIGZvbnQtZmFtaWx5PSJQbHVzIEpha2FydGEgU2FucywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM1YjY0NzIiIGxldHRlci1zcGFjaW5nPSIxLjIiPkRJU1RSSUJVSURPUkEgREUgRVBJPC90ZXh0PjxyZWN0IHg9IjE2OCIgeT0iODgiIHdpZHRoPSI3MiIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iI0ZGQzQ2QiIvPjwvc3ZnPg=="},"original-epi":{"nome":"Original EPI","nomeCompleto":"Original EPI — Distribuidora de Equipamentos de Proteção","segmento":"Distribuidora e fornecedora de EPI","cidade":"São Paulo/SP","email":"comercial1@originalepi.com.br","telefone":"(11) 2600-5434","site":"www.originalepi.com.br","siteUrl":"https://www.originalepi.com.br","tagline":"Fornecimento de EPI sem ruído e sem atraso.","claim":"Abastecimento contínuo de EPI para indústrias, obras e frotas, com atendimento comercial dedicado.","beneficios":["Atendimento B2B","Cotação rápida","Cobertura nacional"],"cor1":"#1B63C4","cor2":"#0D2E5E","cor3":"#FF8A3D","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnb3JpZ2luYWxlcGkiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxQjYzQzQiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwRDJFNUUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCIgcng9IjE4IiBmaWxsPSIjZmZmZmZmIi8+PHBhdGggZD0iTTg0IDIyIEwxNDAgNDQgVjg4IEMxNDAgMTE2IDExNiAxMzIgODQgMTQyIEM1MiAxMzIgMjggMTE2IDI4IDg4IFY0NCBaIiBmaWxsPSJ1cmwoI2dvcmlnaW5hbGVwaSkiLz48cGF0aCBkPSJNODQgMzQgTDEyOSA1MiBWODggQzEyOSAxMTAgMTEwIDEyMyA4NCAxMzEgQzU4IDEyMyAzOSAxMTAgMzkgODggVjUyIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGOEEzRCIgc3Ryb2tlLXdpZHRoPSIzIiBvcGFjaXR5PSIuODUiLz48dGV4dCB4PSI4OCIgeT0iOTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJPdXRmaXQsIEFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjZmZmZmZmIj5PPC90ZXh0Pjx0ZXh0IHg9IjE2OCIgeT0iNzgiIGZvbnQtZmFtaWx5PSJPdXRmaXQsIEFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMUI2M0M0Ij5PcmlnaW5hbCBFUEk8L3RleHQ+PHRleHQgeD0iMTcwIiB5PSIxMDgiIGZvbnQtZmFtaWx5PSJQbHVzIEpha2FydGEgU2FucywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM1YjY0NzIiIGxldHRlci1zcGFjaW5nPSIxLjIiPkRJU1RSSUJVSURPUkEgRSBGT1JORUNFRE9SQSBERSBFUEk8L3RleHQ+PHJlY3QgeD0iMTY4IiB5PSI4OCIgd2lkdGg9IjcyIiBoZWlnaHQ9IjQiIHJ4PSIyIiBmaWxsPSIjRkY4QTNEIi8+PC9zdmc+"},"grupo-isafety":{"nome":"Grupo iSafety","nomeCompleto":"Grupo iSafety — Treinamentos e Segurança do Trabalho","segmento":"Treinamentos em NRs (NR-33, NR-35, NR-10)","cidade":"Brasil","email":"comercial@grupoisafety.com.br","telefone":"—","site":"www.grupoisafety.com.br","siteUrl":"https://www.grupoisafety.com.br","tagline":"Treinamento que muda comportamento.","claim":"NR-10, NR-33 e NR-35 com teoria, prática e instrutores que conhecem a operação de verdade.","beneficios":["Turmas in company","Plataforma EAD","Instrutores certificados"],"cor1":"#E8452C","cor2":"#7C1A0F","cor3":"#FFD166","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnZ3J1cG9pc2FmZXR5IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRTg0NTJDIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjN0MxQTBGIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYyMCIgaGVpZ2h0PSIxNjAiIHJ4PSIxOCIgZmlsbD0iI2ZmZmZmZiIvPjxwYXRoIGQ9Ik04NCAyMiBMMTQwIDQ0IFY4OCBDMTQwIDExNiAxMTYgMTMyIDg0IDE0MiBDNTIgMTMyIDI4IDExNiAyOCA4OCBWNDQgWiIgZmlsbD0idXJsKCNnZ3J1cG9pc2FmZXR5KSIvPjxwYXRoIGQ9Ik04NCAzNCBMMTI5IDUyIFY4OCBDMTI5IDExMCAxMTAgMTIzIDg0IDEzMSBDNTggMTIzIDM5IDExMCAzOSA4OCBWNTIgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZEMTY2IiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9Ii44NSIvPjx0ZXh0IHg9Ijg4IiB5PSI5NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ik91dGZpdCwgQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiNmZmZmZmYiPkdJPC90ZXh0Pjx0ZXh0IHg9IjE2OCIgeT0iNzgiIGZvbnQtZmFtaWx5PSJPdXRmaXQsIEFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjRTg0NTJDIj5HcnVwbyBpU2FmZXR5PC90ZXh0Pjx0ZXh0IHg9IjE3MCIgeT0iMTA4IiBmb250LWZhbWlseT0iUGx1cyBKYWthcnRhIFNhbnMsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjNWI2NDcyIiBsZXR0ZXItc3BhY2luZz0iMS4yIj5UUkVJTkFNRU5UT1MgRU0gTlJTIChOUi0zMywgTlItMzUsIE5SLTEwKTwvdGV4dD48cmVjdCB4PSIxNjgiIHk9Ijg4IiB3aWR0aD0iNzIiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiNGRkQxNjYiLz48L3N2Zz4="},"infoseg":{"nome":"InfoSeg","nomeCompleto":"InfoSeg — Medicina e Segurança do Trabalho","segmento":"Consultoria em SST, PGR, PCMSO e treinamentos","cidade":"São Paulo/SP","email":"contato@infosegconsult.com.br","telefone":"(11) 2305-9547","site":"infosegconsult.com.br","siteUrl":"https://infosegconsult.com.br","tagline":"Documentação viva, não papel parado.","claim":"PGR, PCMSO, laudos e treinamentos de NR conduzidos por quem acompanha a rotina do cliente.","beneficios":["PGR e PCMSO","Laudos técnicos","Treinamentos de NR"],"cor1":"#0E7C86","cor2":"#083F45","cor3":"#7DE2E8","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnaW5mb3NlZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzBFN0M4NiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA4M0Y0NSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI2MjAiIGhlaWdodD0iMTYwIiByeD0iMTgiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCBkPSJNODQgMjIgTDE0MCA0NCBWODggQzE0MCAxMTYgMTE2IDEzMiA4NCAxNDIgQzUyIDEzMiAyOCAxMTYgMjggODggVjQ0IFoiIGZpbGw9InVybCgjZ2luZm9zZWcpIi8+PHBhdGggZD0iTTg0IDM0IEwxMjkgNTIgVjg4IEMxMjkgMTEwIDExMCAxMjMgODQgMTMxIEM1OCAxMjMgMzkgMTEwIDM5IDg4IFY1MiBaIiBmaWxsPSJub25lIiBzdHJva2U9IiM3REUyRTgiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjg1Ii8+PHRleHQgeD0iODgiIHk9Ijk3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iT3V0Zml0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI2ZmZmZmZiI+STwvdGV4dD48dGV4dCB4PSIxNjgiIHk9Ijc4IiBmb250LWZhbWlseT0iT3V0Zml0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzBFN0M4NiI+SW5mb1NlZzwvdGV4dD48dGV4dCB4PSIxNzAiIHk9IjEwOCIgZm9udC1mYW1pbHk9IlBsdXMgSmFrYXJ0YSBTYW5zLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzViNjQ3MiIgbGV0dGVyLXNwYWNpbmc9IjEuMiI+Q09OU1VMVE9SSUEgRU0gU1NULCBQR1IsIFBDTVNPIEUgVFJFSU5BTUVOVE9TPC90ZXh0PjxyZWN0IHg9IjE2OCIgeT0iODgiIHdpZHRoPSI3MiIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzdERTJFOCIvPjwvc3ZnPg=="},"vertice-sst":{"nome":"Vértice Consultoria em SST","nomeCompleto":"Vértice Consultoria em SST","segmento":"Consultoria em SST, PGR, PCMSO, LTCAT e eSocial","cidade":"Goiânia/GO","email":"contato@verticeconsultoriaemsst.com.br","telefone":"(62) 98133-8625","site":"verticeconsultoriaemsst.com.br","siteUrl":"https://verticeconsultoriaemsst.com.br","tagline":"Sua empresa em dia com as NRs, sem multa.","claim":"PGR, PCMSO, LTCAT/PPP, riscos psicossociais da NR-1 e eSocial SST com proposta em até 1 dia útil.","beneficios":["PGR + PCMSO em 24h","Riscos psicossociais NR-1","Goiânia e todo o estado"],"cor1":"#112D5D","cor2":"#081A38","cor3":"#63A4FF","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJndmVydGljZXNzdCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzExMkQ1RCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA4MUEzOCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI2MjAiIGhlaWdodD0iMTYwIiByeD0iMTgiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCBkPSJNODQgMjIgTDE0MCA0NCBWODggQzE0MCAxMTYgMTE2IDEzMiA4NCAxNDIgQzUyIDEzMiAyOCAxMTYgMjggODggVjQ0IFoiIGZpbGw9InVybCgjZ3ZlcnRpY2Vzc3QpIi8+PHBhdGggZD0iTTg0IDM0IEwxMjkgNTIgVjg4IEMxMjkgMTEwIDExMCAxMjMgODQgMTMxIEM1OCAxMjMgMzkgMTEwIDM5IDg4IFY1MiBaIiBmaWxsPSJub25lIiBzdHJva2U9IiM2M0E0RkYiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjg1Ii8+PHRleHQgeD0iODIiIHk9Ijk3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iT3V0Zml0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI2ZmZmZmZiI+VkNTPC90ZXh0Pjx0ZXh0IHg9IjE2OCIgeT0iNzIiIGZvbnQtZmFtaWx5PSJPdXRmaXQsIEFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI1IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTEyRDVEIj5Ww6lydGljZSBDb25zdWx0b3JpYSBlbSBTU1Q8L3RleHQ+PHRleHQgeD0iMTcwIiB5PSIxMDIiIGZvbnQtZmFtaWx5PSJQbHVzIEpha2FydGEgU2FucywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM1YjY0NzIiIGxldHRlci1zcGFjaW5nPSIxLjIiPkNPTlNVTFRPUklBIEVNIFNTVCwgUEdSLCBQQ01TTywgTFRDQVQgRSBFU09DSUE8L3RleHQ+PHJlY3QgeD0iMTY4IiB5PSI4MiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjQiIHJ4PSIyIiBmaWxsPSIjNjNBNEZGIi8+PC9zdmc+"},"3a-consultoria":{"nome":"3A Consultoria","nomeCompleto":"3A Consultoria — Segurança e Saúde no Trabalho","segmento":"Higiene ocupacional, perícias, treinamentos e meio ambiente","cidade":"Goiânia/GO","email":"3aconsultoria@3aconsultoria.com.br","telefone":"(62) 3281-2077","site":"www.3aconsultoria.com.br","siteUrl":"https://www.3aconsultoria.com.br","tagline":"Prevenir para lucrar.","claim":"Desde 1999 cuidando para que sua empresa atenda todas as exigências de SST com o melhor custo-benefício.","beneficios":["Assistência pericial","Higiene ocupacional","Treinamentos e meio ambiente"],"cor1":"#123C6B","cor2":"#07203D","cor3":"#F2B705","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnM2Fjb25zdWx0b3JpYSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzEyM0M2QiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA3MjAzRCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI2MjAiIGhlaWdodD0iMTYwIiByeD0iMTgiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCBkPSJNODQgMjIgTDE0MCA0NCBWODggQzE0MCAxMTYgMTE2IDEzMiA4NCAxNDIgQzUyIDEzMiAyOCAxMTYgMjggODggVjQ0IFoiIGZpbGw9InVybCgjZzNhY29uc3VsdG9yaWEpIi8+PHBhdGggZD0iTTg0IDM0IEwxMjkgNTIgVjg4IEMxMjkgMTEwIDExMCAxMjMgODQgMTMxIEM1OCAxMjMgMzkgMTEwIDM5IDg4IFY1MiBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNGMkI3MDUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjg1Ii8+PHRleHQgeD0iODgiIHk9Ijk3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iT3V0Zml0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI2ZmZmZmZiI+M0M8L3RleHQ+PHRleHQgeD0iMTY4IiB5PSI3OCIgZm9udC1mYW1pbHk9Ik91dGZpdCwgQXJpYWwgQmxhY2ssIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDAiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiMxMjNDNkIiPjNBIENvbnN1bHRvcmlhPC90ZXh0Pjx0ZXh0IHg9IjE3MCIgeT0iMTA4IiBmb250LWZhbWlseT0iUGx1cyBKYWthcnRhIFNhbnMsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjNWI2NDcyIiBsZXR0ZXItc3BhY2luZz0iMS4yIj5ISUdJRU5FIE9DVVBBQ0lPTkFMLCBQRVLDjUNJQVMsIFRSRUlOQU1FTlRPUyBFIDwvdGV4dD48cmVjdCB4PSIxNjgiIHk9Ijg4IiB3aWR0aD0iNzIiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiNGMkI3MDUiLz48L3N2Zz4="},"aprotetora":{"nome":"AProtetora EPI","nomeCompleto":"AProtetora Comércio de EPI","segmento":"Loja e distribuidora de EPI","cidade":"Goiânia/GO","email":"comercial@aprotetoraepis.com.br","telefone":"(62) 99939-5860","site":"aprotetoraepis.com.br","siteUrl":"https://aprotetoraepis.com.br","tagline":"Falou de segurança, lembrou AProtetora.","claim":"Linha completa de EPI das melhores marcas, pronta entrega e preço justo para Goiás e todo o Brasil.","beneficios":["Pronta entrega","Melhores marcas","Orçamento no WhatsApp"],"cor1":"#C81E2B","cor2":"#6B0D14","cor3":"#FFC857","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnYXByb3RldG9yYSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0M4MUUyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzZCMEQxNCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI2MjAiIGhlaWdodD0iMTYwIiByeD0iMTgiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCBkPSJNODQgMjIgTDE0MCA0NCBWODggQzE0MCAxMTYgMTE2IDEzMiA4NCAxNDIgQzUyIDEzMiAyOCAxMTYgMjggODggVjQ0IFoiIGZpbGw9InVybCgjZ2Fwcm90ZXRvcmEpIi8+PHBhdGggZD0iTTg0IDM0IEwxMjkgNTIgVjg4IEMxMjkgMTEwIDExMCAxMjMgODQgMTMxIEM1OCAxMjMgMzkgMTEwIDM5IDg4IFY1MiBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkM4NTciIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjg1Ii8+PHRleHQgeD0iODgiIHk9Ijk3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iT3V0Zml0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI2ZmZmZmZiI+QTwvdGV4dD48dGV4dCB4PSIxNjgiIHk9Ijc4IiBmb250LWZhbWlseT0iT3V0Zml0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI0M4MUUyQiI+QVByb3RldG9yYSBFUEk8L3RleHQ+PHRleHQgeD0iMTcwIiB5PSIxMDgiIGZvbnQtZmFtaWx5PSJQbHVzIEpha2FydGEgU2FucywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM1YjY0NzIiIGxldHRlci1zcGFjaW5nPSIxLjIiPkxPSkEgRSBESVNUUklCVUlET1JBIERFIEVQSTwvdGV4dD48cmVjdCB4PSIxNjgiIHk9Ijg4IiB3aWR0aD0iNzIiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiNGRkM4NTciLz48L3N2Zz4="},"rede-epi":{"nome":"Rede EPI","nomeCompleto":"Rede EPI — Distribuidora Atacadista","segmento":"Distribuidora atacadista de EPI","cidade":"Goiânia e Rio Verde/GO","email":"comercial@redeepi.com.br","telefone":"(62) 3928-4141","site":"redeepi.com.br","siteUrl":"https://redeepi.com.br","tagline":"Atacado de EPI com presença em Goiás.","claim":"Atacado de EPI com estoque em Goiânia e Rio Verde para abastecer indústria, agro e construção.","beneficios":["Preço de atacado","Duas bases em GO","Atendimento comercial"],"cor1":"#0F6E3F","cor2":"#063D22","cor3":"#FFD34E","logo":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MjAgMTYwIiB3aWR0aD0iNjIwIiBoZWlnaHQ9IjE2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmVkZWVwaSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzBGNkUzRiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA2M0QyMiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI2MjAiIGhlaWdodD0iMTYwIiByeD0iMTgiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCBkPSJNODQgMjIgTDE0MCA0NCBWODggQzE0MCAxMTYgMTE2IDEzMiA4NCAxNDIgQzUyIDEzMiAyOCAxMTYgMjggODggVjQ0IFoiIGZpbGw9InVybCgjZ3JlZGVlcGkpIi8+PHBhdGggZD0iTTg0IDM0IEwxMjkgNTIgVjg4IEMxMjkgMTEwIDExMCAxMjMgODQgMTMxIEM1OCAxMjMgMzkgMTEwIDM5IDg4IFY1MiBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkQzNEUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjg1Ii8+PHRleHQgeD0iODgiIHk9Ijk3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iT3V0Zml0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI2ZmZmZmZiI+UjwvdGV4dD48dGV4dCB4PSIxNjgiIHk9Ijc4IiBmb250LWZhbWlseT0iT3V0Zml0LCBBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzBGNkUzRiI+UmVkZSBFUEk8L3RleHQ+PHRleHQgeD0iMTcwIiB5PSIxMDgiIGZvbnQtZmFtaWx5PSJQbHVzIEpha2FydGEgU2FucywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM1YjY0NzIiIGxldHRlci1zcGFjaW5nPSIxLjIiPkRJU1RSSUJVSURPUkEgQVRBQ0FESVNUQSBERSBFUEk8L3RleHQ+PHJlY3QgeD0iMTY4IiB5PSI4OCIgd2lkdGg9IjcyIiBoZWlnaHQ9IjQiIHJ4PSIyIiBmaWxsPSIjRkZEMzRFIi8+PC9zdmc+"}};
+</script>
+<script>
+(function(){
+  'use strict';
+  var slug = new URLSearchParams(location.search).get('p');
+  var CFG  = slug && window.HS_SPONSORS[slug];
+
+  if (!CFG) {
+    document.body.innerHTML = '<div class="hub"><h1>Direção Defensiva — versões patrocinadas</h1>'
+      + '<p>Escolha a empresa para abrir o treinamento com a identidade visual dela.</p>'
+      + '<div class="hubgrid"><a class="hubcard" href="?p=ledan" style="--c1:#0B4DA2;--c2:#0A2E63;--c3:#F5A800"><strong>Ledan</strong><span>Itaquaquecetuba/SP</span></a><a class="hubcard" href="?p=lalan" style="--c1:#127A3E;--c2:#0A3F21;--c3:#C8E96B"><strong>Lalan do Brasil</strong><span>São José dos Pinhais/PR</span></a><a class="hubcard" href="?p=prometal-epis" style="--c1:#D64000;--c2:#7A2400;--c3:#FFC46B"><strong>Prometal EPIs</strong><span>Pelotas/RS</span></a><a class="hubcard" href="?p=original-epi" style="--c1:#1B63C4;--c2:#0D2E5E;--c3:#FF8A3D"><strong>Original EPI</strong><span>São Paulo/SP</span></a><a class="hubcard" href="?p=grupo-isafety" style="--c1:#E8452C;--c2:#7C1A0F;--c3:#FFD166"><strong>Grupo iSafety</strong><span>Brasil</span></a><a class="hubcard" href="?p=infoseg" style="--c1:#0E7C86;--c2:#083F45;--c3:#7DE2E8"><strong>InfoSeg</strong><span>São Paulo/SP</span></a><a class="hubcard" href="?p=vertice-sst" style="--c1:#112D5D;--c2:#081A38;--c3:#63A4FF"><strong>Vértice Consultoria em SST</strong><span>Goiânia/GO</span></a><a class="hubcard" href="?p=3a-consultoria" style="--c1:#123C6B;--c2:#07203D;--c3:#F2B705"><strong>3A Consultoria</strong><span>Goiânia/GO</span></a><a class="hubcard" href="?p=aprotetora" style="--c1:#C81E2B;--c2:#6B0D14;--c3:#FFC857"><strong>AProtetora EPI</strong><span>Goiânia/GO</span></a><a class="hubcard" href="?p=rede-epi" style="--c1:#0F6E3F;--c2:#063D22;--c3:#FFD34E"><strong>Rede EPI</strong><span>Goiânia e Rio Verde/GO</span></a></div></div>';
+    return;
+  }
+
+  document.title = 'Direção Defensiva | patrocínio ' + CFG.nome + ' — Hora da Segurança';
+  var root = document.documentElement;
+  root.style.setProperty('--hs-brand-1', CFG.cor1);
+  root.style.setProperty('--hs-brand-2', CFG.cor2);
+  root.style.setProperty('--hs-brand-3', CFG.cor3);
+
+  var FASES=[2,4], SEG=5;
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function dig(s){return String(s||'').replace(/\D/g,'');}
+
+  /* ---------- jogo em iframe: o original nao e alterado ---------- */
+  var frame = document.createElement('iframe');
+  frame.id = 'hs-frame';
+  frame.src = '../index.html';
+  frame.title = 'Treinamento de Direção Defensiva';
+  document.body.appendChild(frame);
+
+  /* ---------- overlay ---------- */
+  var back = document.createElement('div');
+  back.className = 'hs-ad-backdrop hs-hidden';
+  back.setAttribute('role','dialog'); back.setAttribute('aria-modal','true');
+
+  var chips = (CFG.beneficios||[]).map(function(b){return '<span class="hs-ad-chip">✔ '+esc(b)+'</span>';}).join('');
+  var zap = dig(CFG.telefone);
+  var linkZap = zap.length>=10
+    ? 'https://wa.me/55'+zap+'?text='+encodeURIComponent('Olá! Vi a '+CFG.nome+' no treinamento de Direção Defensiva da Hora da Segurança e gostaria de um orçamento.')
+    : null;
+
+  back.innerHTML =
+   '<div class="hs-ad-card"><div class="hs-ad-inner">'
+   +'<span class="hs-ad-eyebrow">★ Patrocinador oficial deste treinamento</span>'
+   +'<div class="hs-ad-brandrow"><img class="hs-ad-logo" src="'+CFG.logo+'" alt="Logotipo '+esc(CFG.nome)+'">'
+   +'<span class="hs-ad-brandmeta"><span class="hs-ad-brandname">'+esc(CFG.nome)+'</span>'
+   +'<span class="hs-ad-brandseg">'+esc(CFG.segmento)+' · '+esc(CFG.cidade)+'</span></span></div>'
+   +'<h2 class="hs-ad-headline">'+esc(CFG.tagline)+'</h2>'
+   +'<p class="hs-ad-claim">'+esc(CFG.claim)+'</p>'
+   +'<div class="hs-ad-chips">'+chips+'</div>'
+   +'<div class="hs-ad-ctas">'
+   +'<a class="hs-ad-btn hs-ad-btn-primary" target="_blank" rel="noopener noreferrer" href="'+esc(CFG.siteUrl)+'">🔎 Conhecer a '+esc(CFG.nome)+'</a>'
+   +(linkZap?'<a class="hs-ad-btn hs-ad-btn-ghost" target="_blank" rel="noopener noreferrer" href="'+linkZap+'">💬 Pedir orçamento agora</a>'
+            :'<a class="hs-ad-btn hs-ad-btn-ghost" href="mailto:'+esc(CFG.email)+'">✉️ Falar com o comercial</a>')
+   +'</div>'
+   +'<div class="hs-ad-strip"><span><strong>Fale com a '+esc(CFG.nome)+'</strong><br>'
+   +esc(CFG.telefone && CFG.telefone!=='—' ? CFG.telefone+' · ' : '')+esc(CFG.email)+'</span>'
+   +'<a href="'+esc(CFG.siteUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(CFG.site)+' ↗</a></div>'
+   +'<button type="button" class="hs-ad-close" disabled>Aguarde '+SEG+'s…</button>'
+   +'<p class="hs-ad-legal">Espaço publicitário · Treinamento gratuito distribuído por www.horadaseguranca.com</p>'
+   +'</div></div>';
+  document.body.appendChild(back);
+
+  var btn = back.querySelector('.hs-ad-close'), cb = null, tick = null;
+
+  function abrir(rotulo, done){
+    cb = done;
+    back.classList.remove('hs-hidden');
+    requestAnimationFrame(function(){ back.classList.add('is-open'); });
+    var n = SEG; btn.disabled = true; btn.textContent = 'Aguarde '+n+'s…';
+    clearInterval(tick);
+    tick = setInterval(function(){
+      n -= 1;
+      if (n<=0){ clearInterval(tick); btn.disabled=false; btn.textContent=rotulo; }
+      else btn.textContent = 'Aguarde '+n+'s…';
+    },1000);
+  }
+  function fechar(){
+    clearInterval(tick);
+    back.classList.remove('is-open');
+    setTimeout(function(){ back.classList.add('hs-hidden'); var f=cb; cb=null; if(typeof f==='function') f(); },280);
+  }
+  btn.addEventListener('click', function(){ if(!btn.disabled) fechar(); });
+
+  /* ---------- liga o overlay ao jogo dentro do iframe ---------- */
+  var tentativas = 0;
+  function instalar(){
+    tentativas++;
+    var w;
+    try { w = frame.contentWindow; } catch(e){ return false; }
+    if (!w || typeof w.DefensiveDrivingApp === 'undefined') return false;
+    var proto = w.DefensiveDrivingApp.prototype;
+    if (proto.__hsSponsor) return true;
+    proto.__hsSponsor = true;
+    var av = proto.avancar, fi = proto.finalizar;
+    proto.avancar = function(){
+      var self = this, fase = this.currentPhase;
+      if (fase < 6 && FASES.indexOf(fase) !== -1){
+        abrir('Continuar para a fase '+(fase+1)+' ➔', function(){ av.call(self); });
+        return;
+      }
+      return av.call(this);
+    };
+    proto.finalizar = function(){
+      var self = this, args = arguments;
+      abrir('Ver meu relatório final 🏆', function(){ fi.apply(self, args); });
+    };
+    return true;
+  }
+  var iv = setInterval(function(){
+    if (instalar() || tentativas > 200) clearInterval(iv);
+  }, 100);
+  frame.addEventListener('load', instalar);
+})();
+</script>
+</body>
+</html>
