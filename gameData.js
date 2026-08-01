@@ -136,20 +136,20 @@ const DEFENSIVE_DRIVING_DATA = {
         subtitle: "Encontre os perigos na cena de trânsito antes que o tempo acabe.",
         timeLimit: 60,
         risks: [
-            { id: "r1", title: "Motorista usando o celular",        icon: "📱", pos: { top: "58%", left: "17%" }, desc: "O uso do celular multiplica por 4 o risco de acidente e cega o condutor por vários segundos." },
-            { id: "r2", title: "Caminhão sem distância de seguimento", icon: "🚛", pos: { top: "47%", left: "62%" }, desc: "Sem espaço não há frenagem possível: é a origem da maioria dos engavetamentos." },
-            { id: "r3", title: "Carga mal amarrada na caçamba",      icon: "📦", pos: { top: "66%", left: "43%" }, desc: "Carga solta cai na pista e provoca desvios bruscos, capotamentos e colisões." },
-            { id: "r4", title: "Ultrapassagem em faixa contínua",    icon: "🚫", pos: { top: "35%", left: "76%" }, desc: "Infração gravíssima com altíssimo risco de colisão frontal." },
-            { id: "r5", title: "Pneu visivelmente murcho",           icon: "🛞", pos: { top: "72%", left: "72%" }, desc: "Pressão baixa aquece o pneu, aumenta a distância de frenagem e pode estourar." },
-            { id: "r6", title: "Criança próxima à pista",            icon: "🧒", pos: { top: "62%", left: "88%" }, desc: "Crianças mudam de direção sem aviso — exigem redução imediata e atenção redobrada." }
+            { id: "r1", title: "Motorista usando o celular",        icon: "📱", pos: { top: "74%", left: "20%" }, desc: "O uso do celular multiplica por 4 o risco de acidente e cega o condutor por vários segundos." },
+            { id: "r2", title: "Caminhão sem distância de seguimento", icon: "🚛", pos: { top: "74%", left: "60%" }, desc: "Sem espaço não há frenagem possível: é a origem da maioria dos engavetamentos." },
+            { id: "r3", title: "Carga mal amarrada na caçamba",      icon: "📦", pos: { top: "85%", left: "38%" }, desc: "Carga solta cai na pista e provoca desvios bruscos, capotamentos e colisões." },
+            { id: "r4", title: "Ultrapassagem em faixa contínua",    icon: "🚫", pos: { top: "79%", left: "85%" }, desc: "Infração gravíssima com altíssimo risco de colisão frontal." },
+            { id: "r5", title: "Pneu visivelmente murcho",           icon: "🛞", pos: { top: "94%", left: "70%" }, desc: "Pressão baixa aquece o pneu, aumenta a distância de frenagem e pode estourar." },
+            { id: "r6", title: "Criança próxima à pista",            icon: "🧒", pos: { top: "54%", left: "90%" }, desc: "Crianças mudam de direção sem aviso — exigem redução imediata e atenção redobrada." }
         ],
         /* Elementos da cena que NÃO são risco — clicá-los custa pontos */
         decoys: [
-            { id: "d1", title: "Veículo em distância segura",     icon: "🚙", pos: { top: "40%", left: "34%" }, desc: "Este condutor mantém a distância de seguimento adequada. Não há irregularidade aqui." },
-            { id: "d2", title: "Motociclista com capacete e colete", icon: "🏍️", pos: { top: "55%", left: "52%" }, desc: "Equipamento de proteção em uso e trajetória regular na faixa." },
-            { id: "d3", title: "Placa de limite de velocidade",   icon: "🪧", pos: { top: "30%", left: "9%" },  desc: "Sinalização em bom estado e legível. É orientação, não risco." },
-            { id: "d4", title: "Pedestre na passarela",           icon: "🚶", pos: { top: "24%", left: "48%" }, desc: "Travessia feita no local correto, sem conflito com a pista." },
-            { id: "d5", title: "Carro com farol baixo aceso",     icon: "🚗", pos: { top: "50%", left: "80%" }, desc: "Uso correto do farol baixo em rodovia, conforme exige o CTB." }
+            { id: "d1", title: "Veículo em distância segura",     icon: "🚙", pos: { top: "64%", left: "30%" }, desc: "Este condutor mantém a distância de seguimento adequada. Não há irregularidade aqui." },
+            { id: "d2", title: "Motociclista com capacete e colete", icon: "🏍️", pos: { top: "85%", left: "52%" }, desc: "Equipamento de proteção em uso e trajetória regular na faixa." },
+            { id: "d3", title: "Placa de limite de velocidade",   icon: "🪧", pos: { top: "50%", left: "7%" },  desc: "Sinalização em bom estado e legível. É orientação, não risco." },
+            { id: "d4", title: "Pedestre na passarela",           icon: "🚶", pos: { top: "38%", left: "48%" }, desc: "Travessia feita no local correto, sem conflito com a pista." },
+            { id: "d5", title: "Carro com farol baixo aceso",     icon: "🚗", pos: { top: "64%", left: "72%" }, desc: "Uso correto do farol baixo em rodovia, conforme exige o CTB." }
         ]
     },
 

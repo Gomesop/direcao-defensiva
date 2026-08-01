@@ -234,29 +234,96 @@
                     <svg class="scene-art" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="rsSky" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0" stop-color="#8ec9f0"/><stop offset="1" stop-color="#dceefb"/>
+                                <stop offset="0" stop-color="#6fb6e8"/><stop offset="1" stop-color="#dceefb"/>
                             </linearGradient>
                             <linearGradient id="rsAsp" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0" stop-color="#6b7280"/><stop offset="1" stop-color="#3f4653"/>
+                                <stop offset="0" stop-color="#5b6472"/><stop offset="1" stop-color="#333b47"/>
+                            </linearGradient>
+                            <linearGradient id="rsGrass" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0" stop-color="#88b980"/><stop offset="1" stop-color="#6d9c67"/>
                             </linearGradient>
                         </defs>
-                        <rect width="1000" height="300" fill="url(#rsSky)"/>
-                        <path d="M0 250 L150 170 L280 250 Z" fill="#9fb8a6"/>
-                        <path d="M220 255 L400 150 L560 255 Z" fill="#8aa993"/>
-                        <path d="M520 250 L700 175 L880 250 Z" fill="#9fb8a6"/>
-                        <rect y="240" width="1000" height="80" fill="#7fae7c"/>
-                        <path d="M0 520 L1000 520 L1000 300 L0 300 Z" fill="url(#rsAsp)"/>
-                        <rect y="296" width="1000" height="10" fill="#e5e7eb"/>
-                        <rect y="510" width="1000" height="10" fill="#e5e7eb"/>
-                        <g fill="#fbbf24">
-                            <rect x="40"  y="400" width="70" height="8" rx="4"/><rect x="170" y="400" width="70" height="8" rx="4"/>
-                            <rect x="300" y="400" width="70" height="8" rx="4"/><rect x="430" y="400" width="70" height="8" rx="4"/>
-                            <rect x="560" y="400" width="70" height="8" rx="4"/><rect x="690" y="400" width="70" height="8" rx="4"/>
-                            <rect x="820" y="400" width="70" height="8" rx="4"/><rect x="950" y="400" width="50" height="8" rx="4"/>
+
+                        <!-- ceu e sol -->
+                        <rect width="1000" height="250" fill="url(#rsSky)"/>
+                        <circle cx="852" cy="62" r="30" fill="#fff6cf" opacity=".9"/>
+                        <circle cx="852" cy="62" r="52" fill="#fff6cf" opacity=".22"/>
+
+                        <!-- montanhas -->
+                        <path d="M0 232 L140 152 L280 232 Z" fill="#9ab89f"/>
+                        <path d="M210 236 L395 138 L575 236 Z" fill="#82a389"/>
+                        <path d="M515 232 L700 160 L885 232 Z" fill="#9ab89f"/>
+                        <path d="M810 234 L930 176 L1000 220 L1000 234 Z" fill="#8aab90"/>
+
+                        <!-- faixa de vegetacao -->
+                        <rect y="222" width="1000" height="26" fill="#5d8a58"/>
+                        <g fill="#4f7a4c">
+                            <circle cx="60"  cy="222" r="17"/><circle cx="150" cy="226" r="13"/>
+                            <circle cx="255" cy="221" r="16"/><circle cx="360" cy="226" r="12"/>
+                            <circle cx="470" cy="222" r="15"/><circle cx="585" cy="225" r="13"/>
+                            <circle cx="690" cy="221" r="16"/><circle cx="800" cy="226" r="12"/>
+                            <circle cx="905" cy="222" r="15"/><circle cx="975" cy="226" r="13"/>
                         </g>
-                        <g fill="#e5e7eb" opacity=".55">
-                            <rect x="0" y="348" width="1000" height="4"/><rect x="0" y="458" width="1000" height="4"/>
+
+                        <!-- passarela de pedestres sobre a via -->
+                        <g>
+                            <rect x="318" y="176" width="330" height="6" rx="3" fill="#b9c2cc"/>
+                            <rect x="318" y="196" width="330" height="12" rx="3" fill="#cfd6de"/>
+                            <g stroke="#b9c2cc" stroke-width="3">
+                                <line x1="330" y1="182" x2="330" y2="196"/><line x1="386" y1="182" x2="386" y2="196"/>
+                                <line x1="442" y1="182" x2="442" y2="196"/><line x1="498" y1="182" x2="498" y2="196"/>
+                                <line x1="554" y1="182" x2="554" y2="196"/><line x1="610" y1="182" x2="610" y2="196"/>
+                            </g>
+                            <rect x="322" y="208" width="14" height="88" fill="#aab3bd"/>
+                            <rect x="630" y="208" width="14" height="88" fill="#aab3bd"/>
                         </g>
+
+                        <!-- acostamento gramado -->
+                        <rect y="240" width="1000" height="60" fill="url(#rsGrass)"/>
+
+                        <!-- defensa metalica -->
+                        <rect y="284" width="1000" height="6" rx="3" fill="#c3c9d1"/>
+                        <g fill="#9aa3ad">
+                            <rect x="70"  y="288" width="5" height="12"/><rect x="230" y="288" width="5" height="12"/>
+                            <rect x="390" y="288" width="5" height="12"/><rect x="550" y="288" width="5" height="12"/>
+                            <rect x="710" y="288" width="5" height="12"/><rect x="870" y="288" width="5" height="12"/>
+                        </g>
+
+                        <!-- faixa de brita -->
+                        <rect y="296" width="1000" height="8" fill="#8d8579"/>
+
+                        <!-- asfalto -->
+                        <rect y="304" width="1000" height="216" fill="url(#rsAsp)"/>
+                        <g fill="#ffffff" opacity=".035">
+                            <rect y="330" width="1000" height="2"/><rect y="392" width="1000" height="2"/>
+                            <rect y="452" width="1000" height="2"/><rect y="498" width="1000" height="2"/>
+                        </g>
+
+                        <!-- bordo superior (continuo) -->
+                        <rect y="306" width="1000" height="7" fill="#eef1f5"/>
+
+                        <!-- divisoria tracejada da pista contraria -->
+                        <g fill="#eef1f5" opacity=".92">
+                            <rect x="20"  y="357" width="64" height="5" rx="2"/><rect x="144" y="357" width="64" height="5" rx="2"/>
+                            <rect x="268" y="357" width="64" height="5" rx="2"/><rect x="392" y="357" width="64" height="5" rx="2"/>
+                            <rect x="516" y="357" width="64" height="5" rx="2"/><rect x="640" y="357" width="64" height="5" rx="2"/>
+                            <rect x="764" y="357" width="64" height="5" rx="2"/><rect x="888" y="357" width="64" height="5" rx="2"/>
+                        </g>
+
+                        <!-- eixo central: faixa dupla continua -->
+                        <rect y="406" width="1000" height="6" fill="#f4c840"/>
+                        <rect y="416" width="1000" height="6" fill="#f4c840"/>
+
+                        <!-- divisoria tracejada do nosso sentido -->
+                        <g fill="#eef1f5" opacity=".92">
+                            <rect x="20"  y="466" width="64" height="5" rx="2"/><rect x="144" y="466" width="64" height="5" rx="2"/>
+                            <rect x="268" y="466" width="64" height="5" rx="2"/><rect x="392" y="466" width="64" height="5" rx="2"/>
+                            <rect x="516" y="466" width="64" height="5" rx="2"/><rect x="640" y="466" width="64" height="5" rx="2"/>
+                            <rect x="764" y="466" width="64" height="5" rx="2"/><rect x="888" y="466" width="64" height="5" rx="2"/>
+                        </g>
+
+                        <!-- bordo inferior (continuo) -->
+                        <rect y="510" width="1000" height="7" fill="#eef1f5"/>
                     </svg>
                     <div id="scene-hotspots" class="scene-hotspots"></div>
                 </div>

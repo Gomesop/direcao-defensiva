@@ -1229,3 +1229,22 @@ a { color: var(--neon); text-decoration: none; }
     .modal-backdrop { align-items: flex-start; }
     .drive-viewport { height: 150px; }
 }
+
+/* Marcadores da fase 3: sombra para assentar o icone sobre a via */
+.hotspot {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+.hotspot::after {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: -9px;
+    width: 62%; height: 7px;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 50%;
+    filter: blur(2px);
+    pointer-events: none;
+}
+.hotspot.found::after, .hotspot.wrong::after { opacity: .4; }
