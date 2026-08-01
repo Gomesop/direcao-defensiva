@@ -223,44 +223,6 @@ window.HS_SPONSORS = {"ledan":{"nome":"Ledan","nomeCompleto":"Ledan Indústria e
   }
   btn.addEventListener('click', function(){ if(!btn.disabled) fechar(); });
 
-  /* ---------- correcao de layout da fase 3 ----------
-     No SVG da cena o asfalto ocupa y 300..520 de um viewBox 0 0 1000 520,
-     ou seja, apenas os 42% inferiores. O acostamento de grama fica em 46%..58%.
-     As posicoes originais colocavam varios icones sobre o ceu e o morro.
-     Aqui reancoramos cada elemento na faixa correta, sem tocar no jogo original. */
-  var POS_FASE3 = {
-    r1: { top: '72%', left: '22%' },  /* carro com motorista no celular - faixa do meio */
-    r2: { top: '65%', left: '58%' },  /* caminhao colado - faixa mais distante */
-    r3: { top: '86%', left: '40%' },  /* cacamba com carga solta - faixa proxima */
-    r4: { top: '78%', left: '84%' },  /* ultrapassagem sobre a faixa continua */
-    r5: { top: '90%', left: '66%' },  /* pneu murcho - faixa proxima */
-    r6: { top: '53%', left: '90%' },  /* crianca no acostamento, fora do asfalto */
-    d1: { top: '64%', left: '33%' },  /* veiculo em distancia segura */
-    d2: { top: '86%', left: '55%' },  /* motociclista na faixa */
-    d3: { top: '47%', left: '8%'  },  /* placa: fica na margem, nao na pista */
-    d4: { top: '45%', left: '47%' },  /* pedestre na passarela, acima da pista */
-    d5: { top: '63%', left: '76%' }   /* carro com farol baixo */
-  };
-  function corrigirFase3(w){
-    /* DEFENSIVE_DRIVING_DATA e declarado com const no jogo original, entao nao
-       existe em window. Injetamos um script no proprio documento do iframe,
-       que roda no escopo global dele e enxerga a constante. */
-    try {
-      if (w.__hsFase3Ok) return;
-      var d = w.document;
-      var sc = d.createElement('script');
-      sc.textContent =
-        'try{(function(){' +
-          'var P=' + JSON.stringify(POS_FASE3) + ';' +
-          'var f=DEFENSIVE_DRIVING_DATA.phase3;' +
-          '(f.risks||[]).concat(f.decoys||[]).forEach(function(e){ if(P[e.id]) e.pos=P[e.id]; });' +
-          'window.__hsFase3Ok=true;' +
-        '})();}catch(e){}';
-      (d.head || d.documentElement).appendChild(sc);
-      sc.parentNode.removeChild(sc);
-    } catch(e){}
-  }
-
   /* ---------- liga o overlay ao jogo dentro do iframe ---------- */
   var tentativas = 0;
   function instalar(){
@@ -273,7 +235,6 @@ window.HS_SPONSORS = {"ledan":{"nome":"Ledan","nomeCompleto":"Ledan Indústria e
     if (!proto || typeof proto.avancar !== 'function') return false;
     if (proto.__hsSponsor) return true;
     proto.__hsSponsor = true;
-    corrigirFase3(w);
     var av = proto.avancar, fi = proto.finalizar;
     proto.avancar = function(){
       var self = this, fase = this.currentPhase;
