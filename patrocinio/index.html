@@ -207,7 +207,7 @@ window.HS_SPONSORS = {"ledan":{"nome":"Ledan","nomeCompleto":"Ledan Indústria e
   function abrir(rotulo, done){
     cb = done;
     back.classList.remove('hs-hidden');
-    requestAnimationFrame(function(){ back.classList.add('is-open'); });
+    setTimeout(function(){ back.classList.add('is-open'); }, 20);
     var n = SEG; btn.disabled = true; btn.textContent = 'Aguarde '+n+'s…';
     clearInterval(tick);
     tick = setInterval(function(){
