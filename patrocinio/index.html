@@ -242,13 +242,22 @@ window.HS_SPONSORS = {"ledan":{"nome":"Ledan","nomeCompleto":"Ledan Indústria e
     d5: { top: '63%', left: '76%' }   /* carro com farol baixo */
   };
   function corrigirFase3(w){
+    /* DEFENSIVE_DRIVING_DATA e declarado com const no jogo original, entao nao
+       existe em window. Injetamos um script no proprio documento do iframe,
+       que roda no escopo global dele e enxerga a constante. */
     try {
-      var d3 = w.DEFENSIVE_DRIVING_DATA && w.DEFENSIVE_DRIVING_DATA.phase3;
-      if (!d3 || d3.__hsFix) return;
-      d3.__hsFix = true;
-      (d3.risks || []).concat(d3.decoys || []).forEach(function(el){
-        if (POS_FASE3[el.id]) el.pos = POS_FASE3[el.id];
-      });
+      if (w.__hsFase3Ok) return;
+      var d = w.document;
+      var sc = d.createElement('script');
+      sc.textContent =
+        'try{(function(){' +
+          'var P=' + JSON.stringify(POS_FASE3) + ';' +
+          'var f=DEFENSIVE_DRIVING_DATA.phase3;' +
+          '(f.risks||[]).concat(f.decoys||[]).forEach(function(e){ if(P[e.id]) e.pos=P[e.id]; });' +
+          'window.__hsFase3Ok=true;' +
+        '})();}catch(e){}';
+      (d.head || d.documentElement).appendChild(sc);
+      sc.parentNode.removeChild(sc);
     } catch(e){}
   }
 
