@@ -227,10 +227,12 @@ window.HS_SPONSORS = {"ledan":{"nome":"Ledan","nomeCompleto":"Ledan Indústria e
   var tentativas = 0;
   function instalar(){
     tentativas++;
-    var w;
+    var w, proto = null;
     try { w = frame.contentWindow; } catch(e){ return false; }
-    if (!w || typeof w.DefensiveDrivingApp === 'undefined') return false;
-    var proto = w.DefensiveDrivingApp.prototype;
+    if (!w) return false;
+    if (typeof w.DefensiveDrivingApp === 'function') proto = w.DefensiveDrivingApp.prototype;
+    else if (w.ddApp) proto = Object.getPrototypeOf(w.ddApp);
+    if (!proto || typeof proto.avancar !== 'function') return false;
     if (proto.__hsSponsor) return true;
     proto.__hsSponsor = true;
     var av = proto.avancar, fi = proto.finalizar;
